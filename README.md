@@ -1,0 +1,1 @@
+# auros-ecommerce-vuejs-with-pinia
