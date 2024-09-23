@@ -2,10 +2,10 @@
   <v-app-bar elevation="0">
     <v-container class="d-flex align-center justify-space-between">
       <!-- App logo -->
-      <div class="log">
+      <RouterLink class="log" to="/">
         <v-img width="160" aspect-ratio="16/9" src="../../assets/images/logo/logo.svg">
         </v-img>
-      </div>
+      </RouterLink>
 
       <!-- Navigation links -->
 
@@ -13,10 +13,12 @@
         <div class="navigation-link mr-10">
           <v-btn
             size="small"
-            variant="plain"
+            variant="text"
             v-for="item in links"
             :key="item.text"
             :to="item.route"
+            :active="isActiveRoute(item.route)"
+            active-color="primary"
           >
             {{ item.text }}
           </v-btn>
@@ -62,13 +64,17 @@
 
 <script setup>
 import { useStoreDrawerCart } from "@/stores/storeDrawerCart";
-import { ref } from "vue";
-
+import { reactive, ref, computed } from "vue";
+import { RouterLink, useRoute } from "vue-router";
 const storeDrawer = useStoreDrawerCart();
 
 const links = ref([
   { text: "Home", route: "/" },
   { text: "Product", route: "/product" },
-  { text: "Showroom", route: "/" },
+  { text: "Showroom", route: "/signin" },
 ]);
+
+const route = useRoute();
+
+const isActiveRoute = (routePath) => route.path === routePath;
 </script>

@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="0" class="border">
-    <v-img :height="`${height}px`" :src="productItem.image"></v-img>
+    <v-img :src="productItem.image" :height="`${height}px`"></v-img>
     <v-card-item class="pb-4 bg-ash">
       <div class="text-subtitle-1 font-weight-bold secondary-font">
         {{ productItem.name }}
@@ -23,13 +23,13 @@
 import { defineProps } from "vue";
 
 const props = defineProps({
-  height: {
-    type: [String, Number], // Accept both string or number
-    default: 300, // Set the default height to 300 if not provided
-  },
   productItem: {
     type: Object,
     required: true,
+  },
+  height: {
+    type: [String, Number], // Accept both string or number
+    default: 300, // Set the default height to 300 if not provided
   },
 });
 </script>
